@@ -55,6 +55,10 @@ Then go to your Plugins screen and click __Activate__.
 
 Once activated, head to Appearance -> Menus. Create a menu as usual, and assign it to the Header menu location.
 
+## Customising
+
+### CSS
+
 The plugin should work with all Genesis child themes, though you may need to add styles to position the output in the traditional place of top right, e.g.:
 
 ~~~css
@@ -66,6 +70,26 @@ The plugin should work with all Genesis child themes, though you may need to add
 ~~~
 
 Adjust the width as needed to allow enough space for your title area and menu items.
+
+### Priority
+
+The plugin includes a `genesis_header_nav_priority` filter, with a default value of 12. Use a value of 6-9 to add the nav before the title + widget area, or 11-14 to add it after. If you want to add it in between, you'll need to remove and re-build `genesis_do_header()` function so that the output of the widget area is in a different function that can be hooked to a later priority.
+
+To add the nav before the title + widget area markup in the source, you can use the following:
+
+~~~php
+add_filter( 'genesis_header_nav_priority', 'prefix_genesis_header_nav_priority' );
+/**
+ * Change the order of the nav within the header (Genesis Header Nav plugin)
+ *
+ * @param  int $priority Existing priority. Default is 12.
+ *
+ * @return int           New priority.
+ */
+function prefix_genesis_header_nav_priority( $priority ) {
+	return 8;
+}
+~~~
 
 ## Credits
 

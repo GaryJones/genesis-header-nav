@@ -29,12 +29,16 @@ class Genesis_Header_Nav {
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
+	 * Applies `genesis_header_nav_priority` filter. Use a value of 6-9 to add the nav before title + widget area, or
+	 * 11-14 to add it after. If you want to add it in between, you'll need to remove and re-build `genesis_do_header()`
+	 * so that the output of the widget area is in a different function that can be hooked to a later priority.
+	 *
 	 * @since 1.0.0
 	 */
 	private function __construct() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'genesis_setup', array( $this, 'register_nav_menu' ), 15 );
-		add_action( 'genesis_header', array( $this, 'show_menu' ), 8 );
+		add_action( 'genesis_header', array( $this, 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
 		add_filter( 'body_class', array( $this, 'body_classes' ), 15 );
 	}
 
