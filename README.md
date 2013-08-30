@@ -11,29 +11,19 @@ The default method of getting a menu to appear in the top right of a site using 
  
 This plugin registers a new menu location called Header and, if a menu is assigned to it, displays it before the Header Right area. If you don't have any widgets in the Header Right area, then Genesis ensures that none of that widget area markup is output, so you end up with code like screenshot 2. If you do want a widget in the Header Right area, that's fine - it can be positioned and styled as you want, without negatively affecting the navigation menu as well.
 
-The plugin should work with all Genesis child themes, though you may need to add styles to position the output in the traditional place of top right, e.g.:
-
-~~~css
-.nav-header {
-	float: right;
-	text-align: right;
-	width: 50%;
-}
-~~~ 
-
 ## Screenshots
 
-![Screenshot of markup using Custom Menu widget](https://raw.github.com/GaryJones/genesis-header-nav/master/assets/screenshot-1.png)  
+![Screenshot of markup using Custom Menu widget](assets/screenshot-1.png)  
 _Screenshot 1: Markup using Custom Menu widget._
 
 ---
 
-![Screenshot of markup using this plugin](https://raw.github.com/GaryJones/genesis-header-nav/master/assets/screenshot-2.png)  
+![Screenshot of markup using this plugin](assets/screenshot-2.png)  
 _Screenshot 2: Markup using this plugin._
 
 ## Requirements
- * WordPress 3.0
- * Genesis 2.0
+ * WordPress 3.0+
+ * Genesis 2.0+
 
 ## Installation
 
@@ -63,7 +53,19 @@ Then go to your Plugins screen and click __Activate__.
 
 ## Usage
 
-Once activated, head to Appearance -> Menus. Create a menu as usual, and assign it to the Header menu location. The plugin does the rest.
+Once activated, head to Appearance -> Menus. Create a menu as usual, and assign it to the Header menu location.
+
+The plugin should work with all Genesis child themes, though you may need to add styles to position the output in the traditional place of top right, e.g.:
+
+~~~css
+.nav-header {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+~~~
+
+Adjust the width as needed to allow enough space for your title area and menu items.
 
 ## Credits
 
