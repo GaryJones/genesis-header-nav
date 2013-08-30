@@ -91,6 +91,21 @@ function prefix_genesis_header_nav_priority( $priority ) {
 }
 ~~~
 
+### Top Menu (above `<header>`)
+
+If you give the above priority filter a value of less than 5, then the output will be before the `<header>`, so that you can display what might be considered a Top menu. Of course, this might mean that the "Header" menu location label is confusing, but since that string is internationalised, it's possible to filter that and change it to make it easier for users to understand:
+
+~~~php
+add_filter( 'gettext', 'prefix_genesis_header_nav_name', 10, 3 );
+/**
+ * Change the name of the Header menu location added by Genesis Header Nav plugin.
+ */
+function prefix_genesis_header_nav_name( $translated_text, $original_text, $domain ) {
+	if ( 'genesis-header-nav' === $domain && 'Header' === $original_text )
+		return 'Top';
+}
+~~~
+
 ## Credits
 
 Built by [Gary Jones](https://twitter.com/GaryJ)  
