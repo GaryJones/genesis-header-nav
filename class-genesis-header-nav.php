@@ -148,7 +148,7 @@ class Genesis_Header_Nav {
 		}
 
 		// Do all the checks
-		if ( ! is_active_sidebar( 'header-right' ) && ! has_action( 'genesis_header_right' ) && ! has_nav_menu( 'top' ) )
+		if ( ! is_active_sidebar( 'header-right' ) && ! has_action( 'genesis_header_right' ) && ! has_nav_menu( 'header' ) )
 			$classes[] = 'header-full-width';
 
 		return $classes;
