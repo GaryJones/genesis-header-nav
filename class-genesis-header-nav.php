@@ -77,7 +77,7 @@ class Genesis_Header_Nav {
 	 * @since 1.0.0
 	 */
 	public function register_nav_menu() {
-		register_nav_menu( 'header', __( 'Header', 'genesis-header-nav' ) );
+		register_nav_menus( array( 'header' => __( 'Header', 'genesis-header-nav' ) ) );
 	}
 
 	/**
