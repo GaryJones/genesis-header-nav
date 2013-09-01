@@ -106,6 +106,15 @@ function prefix_genesis_header_nav_name( $translated_text, $original_text, $doma
 }
 ~~~
 
+### Removing the Menu
+
+If you want the menu to not display, perhaps on a landing page, then you can do the following:
+
+~~~php
+if ( class_exists( 'Genesis_Header_Nav' ) )
+	remove_action( 'genesis_header', array( Genesis_Header_Nav::get_instance(), 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+~~~
+
 ## Credits
 
 Built by [Gary Jones](https://twitter.com/GaryJ)  
