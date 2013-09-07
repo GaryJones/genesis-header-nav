@@ -12,7 +12,7 @@
  * Plugin Name:       Genesis Header Nav
  * Plugin URI:        https://github.com/GaryJones/genesis-header-nav
  * Description:       Registers a menu location and displays it inside the header for a Genesis Framework child theme.
- * Version:           1.1.1
+ * Version:           1.2.0
  * Author:            Gary Jones
  * Author URI:        http://gamajo.com/
  * Text Domain:       genesis-header-nav
