@@ -14,12 +14,12 @@ This plugin registers a new menu location called Header and, if a menu is assign
 ## Screenshots
 
 ![Screenshot of markup using Custom Menu widget](assets/screenshot-1.png)  
-_Screenshot 1: Markup using Custom Menu widget._
+_Screenshot 1: Markup using Custom Menu widget. Note the `aside`, `section` and `div` parents to `nav`._
 
 ---
 
 ![Screenshot of markup using this plugin](assets/screenshot-2.png)  
-_Screenshot 2: Markup using this plugin._
+_Screenshot 2: Markup using this plugin. `nav` is a sibling element to the title area `div`._
 
 ## Requirements
  * WordPress 3.0+
@@ -86,9 +86,9 @@ add_filter( 'genesis_header_nav_priority', 'prefix_genesis_header_nav_priority' 
 /**
  * Change the order of the nav within the header (Genesis Header Nav plugin)
  *
- * @param  int $priority Existing priority. Default is 12.
+ * @param int $priority Existing priority. Default is 12.
  *
- * @return int           New priority.
+ * @return int New priority.
  */
 function prefix_genesis_header_nav_priority( $priority ) {
 	return 8;
@@ -103,10 +103,15 @@ If you give the above priority filter a value of less than 5, then the output wi
 add_filter( 'gettext', 'prefix_genesis_header_nav_name', 10, 3 );
 /**
  * Change the name of the Header menu location added by Genesis Header Nav plugin.
+ * 
+ * @param string $translated_text Translated text.
+ * @param string $original_text   Original text.
+ * @param string $domain          Text domain.
  */
 function prefix_genesis_header_nav_name( $translated_text, $original_text, $domain ) {
-	if ( 'genesis-header-nav' === $domain && 'Header' === $original_text )
+	if ( 'genesis-header-nav' === $domain && 'Header' === $original_text ) {
 		return 'Top';
+	}
 }
 ~~~
 
@@ -115,8 +120,9 @@ function prefix_genesis_header_nav_name( $translated_text, $original_text, $doma
 If you want the menu to not display, perhaps on a landing page, then you can do the following:
 
 ~~~php
-if ( class_exists( 'Genesis_Header_Nav' ) )
+if ( class_exists( 'Genesis_Header_Nav' ) ) {
 	remove_action( 'genesis_header', array( Genesis_Header_Nav::get_instance(), 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+}
 ~~~
 
 ## Credits
