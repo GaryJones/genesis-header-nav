@@ -8,7 +8,9 @@ The default method of getting a menu to appear in the top right of a site using 
 
  * Since the menu is output from a widget, you end up with all of the extraneous widget and widget area markup - in a child theme with HTML5 support, that's the widget area `aside`, the widget `section`, and the widget wrap `div`. In themes without HTML5 support, it's three levels of `div` elements instead. Not only is this more DOM elements to render (performance), but all markup in the site header is pushing the real page content further down the source; search engines apparently put higher value on content at the top of the source (which is why Genesis ensures primary and secondary sidebars come lower in the source than the main content, irrespective of where they are displayed on screen).
  * In HTML5 themes, what could be a site's main navigation is wrapped in an `aside` element. It's not known whether this has any impact on SEO. Theoretically at least, search engines may put less value on navigation found in an `aside` or otherwise treat it differently.
- 
+
+    > "_I can't think of any good reason to use an aside in a header... what the hell would it be contextually related to? The logo? lol_" - **Robert Neu**
+
 This plugin registers a new menu location called Header and, if a menu is assigned to it, displays it before the Header Right area. If you don't have any widgets in the Header Right area, then Genesis ensures that none of that widget area markup is output, so you end up with code like screenshot 2. If you do want a widget in the Header Right area, that's fine - it can be positioned and styled as you want, without negatively affecting the navigation menu as well.
 
 ## Screenshots
