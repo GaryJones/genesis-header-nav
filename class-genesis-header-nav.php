@@ -86,41 +86,17 @@ class Genesis_Header_Nav {
 	 * @since 1.0.0
 	 */
 	public function show_menu() {
-		//* If menu is assigned to theme location, output
-		if ( ! has_nav_menu( 'header' ) )
-			return;
-
 		$class = 'menu genesis-nav-menu menu-header';
-		if ( genesis_superfish_enabled() )
+		if ( genesis_superfish_enabled() ) {
 			$class .= ' js-superfish';
+		}
 
-		$args = array(
-			'theme_location' => 'header',
-			'container'      => '',
-			'menu_class'     => $class,
-			'echo'           => 0,
+		genesis_nav_menu(
+			array(
+				'theme_location' => 'header',
+				'menu_class'     => $class,
+			)
 		);
-
-		$nav = wp_nav_menu( $args );
-
-		//* Do nothing if there is nothing to show
-		if ( ! $nav )
-			return;
-
-		$nav_markup_open = genesis_markup( array(
-			'html5'   => '<nav %s>',
-			'xhtml'   => '<div id="nav">',
-			'context' => 'nav-header',
-			'echo'    => false,
-		) );
-		$nav_markup_open .= genesis_structural_wrap( 'menu-header', 'open', 0 );
-
-		$nav_markup_close  = genesis_structural_wrap( 'menu-header', 'close', 0 );
-		$nav_markup_close .= genesis_html5() ? '</nav>' : '</div>';
-
-		$nav_output = $nav_markup_open . $nav . $nav_markup_close;
-
-		echo apply_filters( 'genesis_do_header_nav', $nav_output, $nav, $args );
 	}
 
 	/**

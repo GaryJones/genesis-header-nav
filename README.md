@@ -25,7 +25,7 @@ _Screenshot 2: Markup using this plugin. `nav` is a sibling element to the title
 
 ## Requirements
  * WordPress 3.0+
- * Genesis 2.0+
+ * Genesis 2.1+
 
 ## Installation
 
@@ -60,6 +60,10 @@ This plugin supports the [GitHub Updater](https://github.com/afragen/github-upda
 ## Usage
 
 Once activated, head to Appearance -> Menus. Create a menu as usual, and assign it to the Header menu location.
+
+## Backwards-incompatible Changes
+
+The hook that filters the menu was called `genesis_do_header_nav` but is now called `genesis_header_nav` due to using the `genesis_header_nav()` function in Genesis 2.1.
 
 ## Customising
 
