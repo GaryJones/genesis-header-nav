@@ -8,22 +8,24 @@ The default method of getting a menu to appear in the top right of a site using 
 
  * Since the menu is output from a widget, you end up with all of the extraneous widget and widget area markup - in a child theme with HTML5 support, that's the widget area `aside`, the widget `section`, and the widget wrap `div`. In themes without HTML5 support, it's three levels of `div` elements instead. Not only is this more DOM elements to render (performance), but all markup in the site header is pushing the real page content further down the source; search engines apparently put higher value on content at the top of the source (which is why Genesis ensures primary and secondary sidebars come lower in the source than the main content, irrespective of where they are displayed on screen).
  * In HTML5 themes, what could be a site's main navigation is wrapped in an `aside` element. It's not known whether this has any impact on SEO. Theoretically at least, search engines may put less value on navigation found in an `aside` or otherwise treat it differently.
- 
+
+    > "_I can't think of any good reason to use an aside in a header... what the hell would it be contextually related to? The logo? lol_" - **Robert Neu**
+
 This plugin registers a new menu location called Header and, if a menu is assigned to it, displays it before the Header Right area. If you don't have any widgets in the Header Right area, then Genesis ensures that none of that widget area markup is output, so you end up with code like screenshot 2. If you do want a widget in the Header Right area, that's fine - it can be positioned and styled as you want, without negatively affecting the navigation menu as well.
 
 ## Screenshots
 
 ![Screenshot of markup using Custom Menu widget](assets/screenshot-1.png)  
-_Screenshot 1: Markup using Custom Menu widget._
+_Screenshot 1: Markup using Custom Menu widget. Note the `aside`, `section` and `div` parents to `nav`._
 
 ---
 
 ![Screenshot of markup using this plugin](assets/screenshot-2.png)  
-_Screenshot 2: Markup using this plugin._
+_Screenshot 2: Markup using this plugin. `nav` is a sibling element to the title area `div`._
 
 ## Requirements
  * WordPress 3.0+
- * Genesis 2.0+
+ * Genesis 2.1+
 
 ## Installation
 
@@ -59,6 +61,10 @@ This plugin supports the [GitHub Updater](https://github.com/afragen/github-upda
 
 Once activated, head to Appearance -> Menus. Create a menu as usual, and assign it to the Header menu location.
 
+## Backwards-incompatible Changes
+
+The hook that filters the menu was called `genesis_do_header_nav` but is now called `genesis_header_nav` due to using the `genesis_header_nav()` function in Genesis 2.1.
+
 ## Customising
 
 ### CSS
@@ -86,9 +92,9 @@ add_filter( 'genesis_header_nav_priority', 'prefix_genesis_header_nav_priority' 
 /**
  * Change the order of the nav within the header (Genesis Header Nav plugin)
  *
- * @param  int $priority Existing priority. Default is 12.
+ * @param int $priority Existing priority. Default is 12.
  *
- * @return int           New priority.
+ * @return int New priority.
  */
 function prefix_genesis_header_nav_priority( $priority ) {
 	return 8;
@@ -103,10 +109,15 @@ If you give the above priority filter a value of less than 5, then the output wi
 add_filter( 'gettext', 'prefix_genesis_header_nav_name', 10, 3 );
 /**
  * Change the name of the Header menu location added by Genesis Header Nav plugin.
+ * 
+ * @param string $translated_text Translated text.
+ * @param string $original_text   Original text.
+ * @param string $domain          Text domain.
  */
 function prefix_genesis_header_nav_name( $translated_text, $original_text, $domain ) {
-	if ( 'genesis-header-nav' === $domain && 'Header' === $original_text )
+	if ( 'genesis-header-nav' === $domain && 'Header' === $original_text ) {
 		return 'Top';
+	}
 }
 ~~~
 
@@ -115,8 +126,9 @@ function prefix_genesis_header_nav_name( $translated_text, $original_text, $doma
 If you want the menu to not display, perhaps on a landing page, then you can do the following:
 
 ~~~php
-if ( class_exists( 'Genesis_Header_Nav' ) )
+if ( class_exists( 'Genesis_Header_Nav' ) ) {
 	remove_action( 'genesis_header', array( Genesis_Header_Nav::get_instance(), 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+}
 ~~~
 
 ## Credits
