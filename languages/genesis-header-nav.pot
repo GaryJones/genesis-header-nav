@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Genesis Header Nav v1.0.0\n"
-"POT-Creation-Date: 2013-08-30 11:33:00+0000\n"
-"PO-Revision-Date: 2013-08-30 11:33:00+0000\n"
+"Project-Id-Version: Genesis Header Nav v1.3.0\n"
+"POT-Creation-Date: 2014-10-30 00:13:00+0000\n"
+"PO-Revision-Date: 2014-10-30 00:13:00+0000\n"
 "Report-Msgid-Bugs-To: https://github.com/GaryJones/genesis-header-nav/issues \n"
 "Last-Translator: Gary Jones <gary@garyjones.co.uk>\n"
 "Language-Team: English https://github.com/GaryJones/genesis-header-nav \n"
