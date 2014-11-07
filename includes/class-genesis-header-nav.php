@@ -16,16 +16,6 @@
  * @author  Gary Jones
  */
 class Genesis_Header_Nav {
-
-	/**
-	 * Instance of this class.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var object
-	 */
-	protected static $instance = null;
-
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
@@ -35,27 +25,11 @@ class Genesis_Header_Nav {
 	 *
 	 * @since 1.0.0
 	 */
-	private function __construct() {
+	public function run() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'genesis_setup', array( $this, 'register_nav_menu' ), 15 );
 		add_action( 'genesis_header', array( $this, 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
 		add_filter( 'body_class', array( $this, 'body_classes' ), 15 );
-	}
-
-	/**
-	 * Return an instance of this class.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return object A single instance of this class.
-	 */
-	public static function get_instance() {
-		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
 	}
 
 	/**
