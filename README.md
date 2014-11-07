@@ -68,6 +68,8 @@ The hook that filters the menu was called `genesis_do_header_nav` but is now cal
 
 Custom language files previously loaded from (example) `WP_LANG_DIR . '/genesis-header-nav/genesis-header-nav-en_GB.po'` now need to be placed at `WP_LANG_DIR . '/plugins/genesis-header-nav-en_GB.po'`, as per language packs.
 
+This plugin uses PHP namespaces, so you'll need PHP 5.3+ powering your site.
+
 ## Customising
 
 ### CSS
@@ -138,9 +140,14 @@ function prefix_genesis_header_nav_name( $translated_text, $original_text, $doma
 If you want the menu to not display, perhaps on a landing page, then you can do the following:
 
 ~~~php
-if ( class_exists( 'Genesis_Header_Nav' ) ) {
-    global $genesis_header_nav;
-	remove_action( 'genesis_header', array( $genesis_header_nav, 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+add_action( 'init', 'prefix_genesis_header_nav_remove', 11 );
+/**
+ * Remove Genesis Header Nav menu.
+ */
+function prefix_genesis_header_nav_remove() {
+	if ( function_exists( 'Gamajo\GenesisHeaderNav\get_plugin' ) ) {
+		remove_action( 'genesis_header', array( Gamajo\GenesisHeaderNav\get_plugin(), 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+	}
 }
 ~~~
 

@@ -30,9 +30,25 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Main class file.
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-genesis-header-nav.php';
 
-$genesis_header_nav = new Plugin;
+/**
+ * Get plugin object.
+ *
+ * Instantiates it if necessary.
+ *
+ * @since 2.0.0
+ *
+ * @return Gamajo\GenesisHeaderNav\Plugin
+ */
+function get_plugin() {
+	static $plugin = NULL;
+	if ( is_null( $plugin ) ) {
+		$plugin = new Plugin;
+	}
+	return $plugin;
+}
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\genesis_header_nav_i18n' );
 /**
@@ -51,6 +67,6 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\genesis_header_nav_run' );
  * @since 2.0.0
  */
 function genesis_header_nav_run() {
-	global $genesis_header_nav;
-	$genesis_header_nav->run();
+	$plugin = get_plugin();
+	$plugin->run();
 }
