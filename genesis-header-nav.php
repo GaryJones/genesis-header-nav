@@ -28,6 +28,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once plugin_dir_path( __FILE__ ) . 'class-genesis-header-nav.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-genesis-header-nav.php';
 
 Genesis_Header_Nav::get_instance();
