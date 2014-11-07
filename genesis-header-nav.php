@@ -23,6 +23,8 @@
  * GitHub Branch:     master
  */
 
+namespace Gamajo\GenesisHeaderNav;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -30,9 +32,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-genesis-header-nav.php';
 
-$genesis_header_nav = new Genesis_Header_Nav;
+$genesis_header_nav = new Plugin;
 
-add_action( 'plugins_loaded', 'genesis_header_nav_i18n' );
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\genesis_header_nav_i18n' );
 /**
  * Load Genesis Header Nav plugin text domain.
  *
@@ -42,7 +44,7 @@ function genesis_header_nav_i18n() {
 	load_plugin_textdomain( 'genesis-header-nav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
-add_action( 'after_setup_theme', 'genesis_header_nav_run' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\genesis_header_nav_run' );
 /**
  * Run Genesis Header Nav plugin.
  *

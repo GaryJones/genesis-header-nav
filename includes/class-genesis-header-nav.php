@@ -9,13 +9,15 @@
  * @copyright 2013 Gary Jones, Gamajo Tech
  */
 
+namespace Gamajo\GenesisHeaderNav;
+
 /**
  * Plugin class.
  *
  * @package Genesis_Header_Nav
  * @author  Gary Jones
  */
-class Genesis_Header_Nav {
+class Plugin {
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
@@ -89,5 +91,4 @@ class Genesis_Header_Nav {
 
 		return $classes;
 	}
-
 }
