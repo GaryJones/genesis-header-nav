@@ -26,7 +26,7 @@ class Genesis_Header_Nav {
 	 * @since 1.0.0
 	 */
 	public function run() {
-		add_action( 'genesis_setup', array( $this, 'register_nav_menu' ), 15 );
+		add_action( 'init', array( $this, 'register_nav_menu' ), 15 );
 		add_action( 'genesis_header', array( $this, 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
 		add_filter( 'body_class', array( $this, 'body_classes' ), 15 );
 	}

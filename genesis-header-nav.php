@@ -32,10 +32,15 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-genesis-header-nav.ph
 
 $genesis_header_nav = new Genesis_Header_Nav;
 
-add_action( 'plugins_loaded', 'genesis_header_nav' );
+add_action( 'plugins_loaded', 'genesis_header_nav_i18n' );
 
-function genesis_header_nav() {
-	global $genesis_header_nav;
+function genesis_header_nav_i18n() {
 	load_plugin_textdomain( 'genesis-header-nav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+add_action( 'init', 'genesis_header_nav_run' );
+
+function genesis_header_nav_run() {
+	global $genesis_header_nav;
 	$genesis_header_nav->run();
 }
