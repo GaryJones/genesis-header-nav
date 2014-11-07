@@ -36,5 +36,6 @@ add_action( 'plugins_loaded', 'genesis_header_nav' );
 
 function genesis_header_nav() {
 	global $genesis_header_nav;
+	load_plugin_textdomain( 'genesis-header-nav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	$genesis_header_nav->run();
 }

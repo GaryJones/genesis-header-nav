@@ -26,23 +26,9 @@ class Genesis_Header_Nav {
 	 * @since 1.0.0
 	 */
 	public function run() {
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'genesis_setup', array( $this, 'register_nav_menu' ), 15 );
 		add_action( 'genesis_header', array( $this, 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
 		add_filter( 'body_class', array( $this, 'body_classes' ), 15 );
-	}
-
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since 1.0.0
-	 */
-	public function load_plugin_textdomain() {
-		$domain = 'genesis-header-nav';
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-
-		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**

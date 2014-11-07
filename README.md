@@ -24,7 +24,7 @@ _Screenshot 1: Markup using Custom Menu widget. Note the `aside`, `section` and 
 _Screenshot 2: Markup using this plugin. `nav` is a sibling element to the title area `div`._
 
 ## Requirements
- * WordPress 3.0+
+ * WordPress 3.9+
  * Genesis 2.1+
 
 ## Installation
