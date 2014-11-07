@@ -24,7 +24,8 @@ _Screenshot 1: Markup using Custom Menu widget. Note the `aside`, `section` and 
 _Screenshot 2: Markup using this plugin. `nav` is a sibling element to the title area `div`._
 
 ## Requirements
- * WordPress 3.0+
+ * PHP 5.3+
+ * WordPress 3.9+
  * Genesis 2.1+
 
 ## Installation
@@ -65,6 +66,10 @@ Once activated, head to Appearance -> Menus. Create a menu as usual, and assign 
 
 The hook that filters the menu was called `genesis_do_header_nav` but is now called `genesis_header_nav` due to using the `genesis_header_nav()` function in Genesis 2.1.
 
+Custom language files previously loaded from (example) `WP_LANG_DIR . '/genesis-header-nav/genesis-header-nav-en_GB.po'` now need to be placed at `WP_LANG_DIR . '/plugins/genesis-header-nav-en_GB.po'`, as per language packs.
+
+This plugin uses PHP namespaces, so you'll need PHP 5.3+ powering your site.
+
 ## Customising
 
 ### CSS
@@ -83,14 +88,23 @@ Adjust the width as needed to allow enough space for your title area and menu it
 
 ### Priority
 
-The plugin includes a `genesis_header_nav_priority` filter, with a default value of 12. Use a value of 6-9 to add the nav before the title + widget area, or 11-14 to add it after. If you want to add it in between, you'll need to remove and re-build `genesis_do_header()` function so that the output of the widget area is in a different function that can be hooked to a later priority.
+The plugin includes a `genesis_header_nav_priority` filter, with a default value of `12`. Use the following values to reposition the nav accordingly:
+
+* Before the `<header>` element, inside the `.site-container`: 0-4
+* Before the title + widget area: 5-9
+* After the title + widget area: 10-14
+* After the `<header>` element: 15+
+
+If you want to add it in between the title and widget area, you'll need to unhook and re-build `genesis_do_header()` function so that the output of the widget area is in a different function that can be hooked to a later priority.
+
+#### Examples
 
 To add the nav before the title + widget area markup in the source, you can use the following:
 
 ~~~php
 add_filter( 'genesis_header_nav_priority', 'prefix_genesis_header_nav_priority' );
 /**
- * Change the order of the nav within the header (Genesis Header Nav plugin)
+ * Change the order of the nav within the header (Genesis Header Nav plugin).
  *
  * @param int $priority Existing priority. Default is 12.
  *
@@ -126,8 +140,14 @@ function prefix_genesis_header_nav_name( $translated_text, $original_text, $doma
 If you want the menu to not display, perhaps on a landing page, then you can do the following:
 
 ~~~php
-if ( class_exists( 'Genesis_Header_Nav' ) ) {
-	remove_action( 'genesis_header', array( Genesis_Header_Nav::get_instance(), 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+add_action( 'init', 'prefix_genesis_header_nav_remove', 11 );
+/**
+ * Remove Genesis Header Nav menu.
+ */
+function prefix_genesis_header_nav_remove() {
+	if ( function_exists( 'Gamajo\GenesisHeaderNav\get_plugin' ) ) {
+		remove_action( 'genesis_header', array( Gamajo\GenesisHeaderNav\get_plugin(), 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
+	}
 }
 ~~~
 
