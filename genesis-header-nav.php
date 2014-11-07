@@ -33,13 +33,21 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-genesis-header-nav.ph
 $genesis_header_nav = new Genesis_Header_Nav;
 
 add_action( 'plugins_loaded', 'genesis_header_nav_i18n' );
-
+/**
+ * Load Genesis Header Nav plugin text domain.
+ *
+ * @since 2.0.0
+ */
 function genesis_header_nav_i18n() {
 	load_plugin_textdomain( 'genesis-header-nav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
-add_action( 'init', 'genesis_header_nav_run' );
-
+add_action( 'after_setup_theme', 'genesis_header_nav_run' );
+/**
+ * Run Genesis Header Nav plugin.
+ *
+ * @since 2.0.0
+ */
 function genesis_header_nav_run() {
 	global $genesis_header_nav;
 	$genesis_header_nav->run();
