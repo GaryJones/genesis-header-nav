@@ -2,8 +2,8 @@
 /**
  * Genesis Header Nav
  *
- * @package   GenesisHeaderNav
- * @author    Gary Jones <gary@garyjones.co.uk>
+ * @package   Genesis_Header_Nav
+ * @author    Gary Jones
  * @license   GPL-2.0+
  * @link      https://github.com/GaryJones/genesis-header-nav
  * @copyright 2013 Gary Jones, Gamajo Tech
