@@ -3,7 +3,7 @@
  * Genesis Header Nav
  *
  * @package   GenesisHeaderNav
- * @author    Gary Jones <gary@garyjones.co.uk>
+ * @author    Gary Jones
  * @license   GPL-2.0+
  * @link      https://github.com/GaryJones/genesis-header-nav
  * @copyright 2013 Gary Jones, Gamajo Tech
@@ -13,7 +13,7 @@
  * Plugin class.
  *
  * @package GenesisHeaderNav
- * @author  Gary Jones <gary@garyjones.co.uk>
+ * @author  Gary Jones
  */
 class Genesis_Header_Nav {
 
