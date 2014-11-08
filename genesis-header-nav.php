@@ -30,4 +30,12 @@ if ( ! defined( 'WPINC' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'class-genesis-header-nav.php';
 
-Genesis_Header_Nav::get_instance();
+add_action( 'after_setup_theme', 'genesis_header_nav_run' );
+/**
+ * Run the plugin.
+ *
+ * @since 1.3.1
+ */
+function genesis_header_nav_run() {
+	Genesis_Header_Nav::get_instance();
+}
