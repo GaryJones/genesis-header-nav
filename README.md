@@ -11,7 +11,7 @@ The default method of getting a menu to appear in the top right of a site using 
 
     > "_I can't think of any good reason to use an aside in a header... what the hell would it be contextually related to? The logo? lol_" - **Robert Neu**
 
-This plugin registers a new menu location called Header and, if a menu is assigned to it, displays it before the Header Right area. If you don't have any widgets in the Header Right area, then Genesis ensures that none of that widget area markup is output, so you end up with code like screenshot 2. If you do want a widget in the Header Right area, that's fine - it can be positioned and styled as you want, without negatively affecting the navigation menu as well.
+This plugin registers a new menu location called Header and, if a menu is assigned to it, displays it after the Header Right area. If you don't have any widgets in the Header Right area, then Genesis ensures that none of that widget area markup is output, so you end up with code like screenshot 2. If you do want a widget in the Header Right area, that's fine - it can be positioned and styled as you want, without negatively affecting the navigation menu as well.
 
 ## Screenshots
 
@@ -97,9 +97,7 @@ The plugin includes a `genesis_header_nav_priority` filter, with a default value
 
 If you want to add it in between the title and widget area, you'll need to unhook and re-build `genesis_do_header()` function so that the output of the widget area is in a different function that can be hooked to a later priority.
 
-#### Examples
-
-To add the nav before the title + widget area markup in the source, you can use the following:
+As an example, to add the nav before the title + widget area markup in the source, you can use the following:
 
 ~~~php
 add_filter( 'genesis_header_nav_priority', 'prefix_genesis_header_nav_priority' );
