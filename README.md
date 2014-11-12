@@ -66,9 +66,9 @@ Once activated, head to Appearance -> Menus. Create a menu as usual, and assign 
 
 The hook that filters the menu was called `genesis_do_header_nav` but is now called `genesis_header_nav` due to using the `genesis_header_nav()` function in Genesis 2.1.
 
-Custom language files previously loaded from (example) `WP_LANG_DIR . '/genesis-header-nav/genesis-header-nav-en_GB.po'` now need to be placed at `WP_LANG_DIR . '/plugins/genesis-header-nav-en_GB.po'`, as per language packs.
+**2.0.0:** Custom language files previously loaded from (example) `WP_LANG_DIR . '/genesis-header-nav/genesis-header-nav-en_GB.po'` now need to be placed at `WP_LANG_DIR . '/plugins/genesis-header-nav-en_GB.po'`, as per language packs.
 
-This plugin uses PHP namespaces, so you'll need PHP 5.3+ powering your site.
+**2.0.0:** This plugin uses PHP namespaces, so you'll need PHP 5.3+ powering your site.
 
 ## Customising
 
