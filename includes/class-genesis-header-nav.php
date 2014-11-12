@@ -2,30 +2,22 @@
 /**
  * Genesis Header Nav
  *
- * @package   GenesisHeaderNav
- * @author    Gary Jones <gary@garyjones.co.uk>
+ * @package   Genesis_Header_Nav
+ * @author    Gary Jones
  * @license   GPL-2.0+
  * @link      https://github.com/GaryJones/genesis-header-nav
  * @copyright 2013 Gary Jones, Gamajo Tech
  */
 
+namespace Gamajo\GenesisHeaderNav;
+
 /**
  * Plugin class.
  *
- * @package GenesisHeaderNav
- * @author  Gary Jones <gary@garyjones.co.uk>
+ * @package Genesis_Header_Nav
+ * @author  Gary Jones
  */
-class Genesis_Header_Nav {
-
-	/**
-	 * Instance of this class.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var object
-	 */
-	protected static $instance = null;
-
+class Plugin {
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
@@ -35,40 +27,10 @@ class Genesis_Header_Nav {
 	 *
 	 * @since 1.0.0
 	 */
-	private function __construct() {
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+	public function run() {
 		add_action( 'init', array( $this, 'register_nav_menu' ) );
 		add_action( 'genesis_header', array( $this, 'show_menu' ), apply_filters( 'genesis_header_nav_priority', 12 ) );
 		add_filter( 'body_class', array( $this, 'body_classes' ), 15 );
-	}
-
-	/**
-	 * Return an instance of this class.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return object A single instance of this class.
-	 */
-	public static function get_instance() {
-		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
-	}
-
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since 1.0.0
-	 */
-	public function load_plugin_textdomain() {
-		$domain = 'genesis-header-nav';
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-
-		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
@@ -77,7 +39,7 @@ class Genesis_Header_Nav {
 	 * @since 1.0.0
 	 */
 	public function register_nav_menu() {
-		register_nav_menus( array( 'header' => __( 'Header', 'genesis-header-nav' ) ) );
+		register_nav_menu( 'header', __( 'Header', 'genesis-header-nav' ) );
 	}
 
 	/**
@@ -129,5 +91,4 @@ class Genesis_Header_Nav {
 
 		return $classes;
 	}
-
 }

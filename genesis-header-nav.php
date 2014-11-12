@@ -2,8 +2,8 @@
 /**
  * Genesis Header Nav
  *
- * @package   GenesisHeaderNav
- * @author    Gary Jones <gary@garyjones.co.uk>
+ * @package   Genesis_Header_Nav
+ * @author    Gary Jones
  * @license   GPL-2.0+
  * @link      https://github.com/GaryJones/genesis-header-nav
  * @copyright 2013 Gary Jones, Gamajo Tech
@@ -12,7 +12,7 @@
  * Plugin Name:       Genesis Header Nav
  * Plugin URI:        https://github.com/GaryJones/genesis-header-nav
  * Description:       Registers a menu location and displays it inside the header for a Genesis Framework child theme.
- * Version:           1.3.1
+ * Version:           2.0.0
  * Author:            Gary Jones
  * Author URI:        http://gamajo.com/
  * Text Domain:       genesis-header-nav
@@ -23,19 +23,50 @@
  * GitHub Branch:     master
  */
 
+namespace Gamajo\GenesisHeaderNav;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once plugin_dir_path( __FILE__ ) . 'class-genesis-header-nav.php';
+// Main class file.
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-genesis-header-nav.php';
 
-add_action( 'after_setup_theme', 'genesis_header_nav_run' );
 /**
- * Run the plugin.
+ * Get plugin object.
  *
- * @since 1.3.1
+ * Instantiates it if necessary.
+ *
+ * @since 2.0.0
+ *
+ * @return Gamajo\GenesisHeaderNav\Plugin
+ */
+function get_plugin() {
+	static $plugin = NULL;
+	if ( is_null( $plugin ) ) {
+		$plugin = new Plugin;
+	}
+	return $plugin;
+}
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\genesis_header_nav_i18n' );
+/**
+ * Load Genesis Header Nav plugin text domain.
+ *
+ * @since 2.0.0
+ */
+function genesis_header_nav_i18n() {
+	load_plugin_textdomain( 'genesis-header-nav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\genesis_header_nav_run' );
+/**
+ * Run Genesis Header Nav plugin.
+ *
+ * @since 2.0.0
  */
 function genesis_header_nav_run() {
-	Genesis_Header_Nav::get_instance();
+	$plugin = get_plugin();
+	$plugin->run();
 }
