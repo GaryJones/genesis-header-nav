@@ -130,6 +130,7 @@ function prefix_genesis_header_nav_name( $translated_text, $original_text, $doma
 	if ( 'genesis-header-nav' === $domain && 'Header' === $original_text ) {
 		return 'Top';
 	}
+	return $translated_text;
 }
 ~~~
 
