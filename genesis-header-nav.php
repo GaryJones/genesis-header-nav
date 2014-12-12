@@ -21,6 +21,8 @@
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/GaryJones/genesis-header-nav
  * GitHub Branch:     master
+ * Requires WP:       3.9
+ * Requires PHP:      5.3
  */
 
 namespace Gamajo\GenesisHeaderNav;
