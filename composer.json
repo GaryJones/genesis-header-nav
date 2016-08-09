@@ -1,0 +1,23 @@
+{
+  "name": "garyjones/genesis-header-nav",
+  "description": "WordPress plugin that registers a menu location and displays it inside the header for a Genesis Framework child theme.",
+  "keywords": ["genesis", "genesis-header-nav", "navigation"],
+  "type": "wordpress-plugin",
+  "homepage": "https://github.com/garyjones/genesis-header-nav",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Gary Jones",
+      "homepage": "https://gamajo.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/garyjones/genesis-header-nav/issues",
+    "source": "https://github.com/garyjones/genesis-header-nav"
+  },
+  "require": {
+    "composer/installers": "^1.0",
+    "php": ">=5.3.4"
+  }
+}
