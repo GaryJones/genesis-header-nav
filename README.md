@@ -58,6 +58,10 @@ Then go to your Plugins screen and click __Activate__.
 
 This plugin supports the [GitHub Updater](https://github.com/afragen/github-updater) plugin, so if you install that, this plugin becomes automatically updateable direct from GitHub.
 
+## Change Log
+
+See the [CHANGELOG.md](CHANGELOG.md).
+
 ## Usage
 
 Once activated, head to Appearance -> Menus. Create a menu as usual, and assign it to the Header menu location.
