@@ -5,22 +5,23 @@
  * @package   Genesis_Header_Nav
  * @author    Gary Jones
  * @license   GPL-2.0+
- * @link      https://github.com/GaryJones/genesis-header-nav
  * @copyright 2013 Gary Jones, Gamajo Tech
  *
  * @wordpress-plugin
  * Plugin Name:       Genesis Header Nav
  * Plugin URI:        https://github.com/GaryJones/genesis-header-nav
  * Description:       Registers a menu location and displays it inside the header for a Genesis Framework child theme.
- * Version:           2.0.0
+ * Version:           2.1.0
  * Author:            Gary Jones
- * Author URI:        http://gamajo.com/
+ * Author URI:        https://gamajo.com
  * Text Domain:       genesis-header-nav
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/GaryJones/genesis-header-nav
  * GitHub Branch:     master
+ * Requires WP:       3.9
+ * Requires PHP:      5.3
  */
 
 namespace Gamajo\GenesisHeaderNav;
