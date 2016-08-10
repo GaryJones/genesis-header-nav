@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+_Nothing yet._
+
+## [2.1.0] - 2016-08-10
+
 * Add `composer.json`.
 * Add this change log.
 * Fix bug in documentation.
