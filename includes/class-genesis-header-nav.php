@@ -2,10 +2,10 @@
 /**
  * Genesis Header Nav
  *
- * @package   Genesis_Header_Nav
+ * @package   Gamajo\GenesisHeaderNav
  * @author    Gary Jones
- * @license   GPL-2.0+
- * @copyright 2013 Gary Jones, Gamajo Tech
+ * @license   GPL-2.0-or-later
+ * @copyright 2013 Gary Jones, Gamajo
  */
 
 namespace Gamajo\GenesisHeaderNav;
@@ -13,7 +13,7 @@ namespace Gamajo\GenesisHeaderNav;
 /**
  * Plugin class.
  *
- * @package Genesis_Header_Nav
+ * @package Gamajo\GenesisHeaderNav
  * @author  Gary Jones
  */
 class Plugin {

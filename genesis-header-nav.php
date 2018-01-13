@@ -2,10 +2,10 @@
 /**
  * Genesis Header Nav
  *
- * @package   Genesis_Header_Nav
+ * @package   Gamajo\GenesisHeaderNav
  * @author    Gary Jones
- * @license   GPL-2.0+
- * @copyright 2013 Gary Jones, Gamajo Tech
+ * @license   GPL-2.0-or-later
+ * @copyright 2013 Gary Jones, Gamajo
  *
  * @wordpress-plugin
  * Plugin Name:       Genesis Header Nav
@@ -15,7 +15,7 @@
  * Author:            Gary Jones
  * Author URI:        https://gamajo.com
  * Text Domain:       genesis-header-nav
- * License:           GPL-2.0+
+ * License:           GPL-2.0-or-later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/GaryJones/genesis-header-nav
