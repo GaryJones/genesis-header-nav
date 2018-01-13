@@ -4,7 +4,7 @@
   "keywords": ["genesis", "genesis-header-nav", "navigation"],
   "type": "wordpress-plugin",
   "homepage": "https://github.com/garyjones/genesis-header-nav",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Gary Jones",
@@ -17,7 +17,7 @@
     "source": "https://github.com/garyjones/genesis-header-nav"
   },
   "require": {
-    "composer/installers": "^1.0",
-    "php": ">=5.3.4"
+    "php": ">=5.3.4",
+    "composer/installers": "^1.0"
   }
 }
